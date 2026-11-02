@@ -1,0 +1,3 @@
+{
+  "functions": { "api/bypass.js": { "maxDuration": 30 } }
+}
