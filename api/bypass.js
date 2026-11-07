@@ -212,4 +212,4 @@ export default async function handler(req, res) {
     const friendly = /fetch failed|Failed to fetch|network/i.test(msg) ? 'Server lagi sibuk atau sedang maintenance. Coba lagi 5-10 detik.' : msg;
     return res.status(502).json({ success: false, error: friendly, provider: provider.name });
   }
-  }
+}
