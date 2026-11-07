@@ -284,8 +284,9 @@ $('#burger').onclick=()=>$('#drawer').classList.remove('hidden');$('#ov').onclic
 const EX=[["Arceus X Neo","TOP","https://arceusx.com/arceusx"],["Arceus X V5","NEW","https://arceusx.com/v5"],["delta","ANDROID","https://delta.filenetwork.vip/file/Delta-2.743.1136-02.apk"],["delta","IOS","https://dltaexecutor.com/delta-ios/"],["Fluxus","32 BIT","https://files.fluxus-team.net/FluxusZ.ARM32.V701.apk"],["Fluxus","64 BIT","https://files.fluxus-team.net/FluxusZ.ARM64.V701.apk"],["Codex","","https://fluxus.team/"]];
 $('#exl').innerHTML=EX.map(x=>`<a class="ex" href="${x[2]}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" style="fill:#fff;stroke:none"><path d="M12 2c1 4 5 5 5 10a5 5 0 01-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9z"/></svg><span>${x[0]}</span>${x[1]?`<b class="tag">${x[1]}</b>`:''}<svg viewBox="0 0 24 24"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg></a>`).join('');
 
+const BYPASS_API = '/api/bypass?url=';
 // BYPASS
-const HOSTS=/(lootlabs|lootlinks|loot-link|loot-labs|lootdest|work\.ink|sfl\.gl|boost\.ink|sub2unlock|jnkie|linkvertise|lockr|rekonise|adsmore|platoboost|luarmor)/i;
+const HOSTS=/(lootlabs|loot-link|lootdest|platoboost|platorelay|linkvertise|link-to\.net|work\.ink|boost\.ink|bst\.ink|sub2unlock|sub2get|sfl\.gl|lockr|rekonise|adsmore|luarmor)/i;
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const term=$('#term');
 function clearTerm(){term.innerHTML=''}
@@ -307,7 +308,7 @@ async function doBypass(){
     await log('[+] status '+r.status);
     let d={};try{d=await r.json()}catch(e){}
     if(Array.isArray(d.tried))for(const t of d.tried)await log('  · '+t);
-    const ok=d.success===true||d.ok===true,out=d.bypassed||d.result||d.url;
+    const ok=d.success===true||d.ok===true,out=d.result||d.bypassed||d.destination||d.url
 if(d.isKeySystem){
   await log('[!] KEY SYSTEM DETECTED');
   res.innerHTML=`<div style="background:#1a1a1d;border:1px solid #facc15;padding:15px;border-radius:10px;text-align:center">
